@@ -10,14 +10,17 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    public function register(): void {}
+    public function register(): void
+    {
+        //
+    }
 
     public function boot(): void
     {
-        Gate::policy(SchoolClass::class, SchoolClassPolicy::class);
-
-        if (app()->environment('production')) {
+        if ($this->app->environment('production')) {
             URL::forceScheme('https');
         }
+
+        Gate::policy(SchoolClass::class, SchoolClassPolicy::class);
     }
 }
