@@ -1,0 +1,1 @@
+<x-layouts.app><h1>{{ $school->name }}</h1><table><tr><th>Class</th><th>Teacher</th><th>Students</th><th></th></tr>@foreach($classes as $class)<tr><td>{{$class->name}}</td><td>{{$class->currentAssignment?->teacher?->full_name}}</td><td>{{$class->students_count}}</td><td><a class="btn" href="{{route('ceo.class',$class)}}">View class</a></td></tr>@endforeach</table></x-layouts.app>
